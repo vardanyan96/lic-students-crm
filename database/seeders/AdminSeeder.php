@@ -17,6 +17,7 @@ class AdminSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@admin.com',
             'password' => 'qwertyuiop',
+            'role_name' => 'admin',
         ]);
     }
 }

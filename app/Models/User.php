@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -18,11 +19,13 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'uuid',
         'name',
         'surname',
         'patronymic',
         'email',
         'password',
+        'role_name',
     ];
 
     /**
@@ -47,4 +50,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public static function booted()
+    {
+        static::creating(function ($model){
+            $model->uuid = (string)Str::uuid();
+        });
+    }
+
+
 }
