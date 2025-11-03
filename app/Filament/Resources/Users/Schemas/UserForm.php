@@ -16,7 +16,16 @@ class UserForm
                     ->schema([
                         TextInput::make('name')
                             ->required(),
+                        TextInput::make('surname')
+                            ->required(),
+                        TextInput::make('patronymic')
+                            ->required(),
+                        TextInput::make('password'),
+                        TextInput::make('email'),
                     ])
-            ]);
+                    ->columns(2)
+                    ->columnSpan(['lg' => 2]),
+
+            ])->columns(3);
     }
 }
